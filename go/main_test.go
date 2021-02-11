@@ -37,7 +37,7 @@ func TestHandleFunc_GET_Success(t *testing.T) {
 	}
 }
 
-func TestHandleFunc_GET_NotFound(t *testing.T) {
+func TestHandleFunc_PUT_NotFound(t *testing.T) {
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodPut, "/", nil)
 	handleFunc(w, req)
@@ -48,7 +48,7 @@ func TestHandleFunc_GET_NotFound(t *testing.T) {
 
 func TestRun(t *testing.T) {
 	oLoadEnv := loadEnv
-	loadEnv = func(filename string) (err error) {
+	loadEnv = func(filenames ...string) (err error) {
 		os.Setenv("PORT", "8080")
 		return
 	}

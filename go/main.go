@@ -13,8 +13,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/honestbank/test-engineering-assignment/full-stack/env"
-)
+	env "github.com/joho/godotenv"
+	)
 
 const envFile = ".env"
 const dataFile = "data/forms.json"
@@ -45,7 +45,7 @@ func (f formInput) save() error {
 	if err != nil {
 		return err
 	}
-	forms = []formInput{f}
+	forms = append(forms, f)
 	toSave, err := json.Marshal(forms)
 	if err != nil {
 		return err
@@ -55,6 +55,7 @@ func (f formInput) save() error {
 }
 
 func handleFunc(resp http.ResponseWriter, req *http.Request) {
+	fmt.Println("handling a connection")
 	switch req.Method {
 	case http.MethodPost:
 		err := req.ParseForm()
@@ -63,7 +64,12 @@ func handleFunc(resp http.ResponseWriter, req *http.Request) {
 			fmt.Fprint(resp, err.Error())
 			return
 		}
-		f := formInput{}
+		f := formInput{
+			FirstName: req.PostFormValue("first_name"),
+			LastName: req.PostFormValue("last_name"),
+			Email: req.PostFormValue("email"),
+			PhoneNumber: req.PostFormValue("phone_number"),
+		}
 		err = f.validate()
 		if err != nil {
 			resp.WriteHeader(http.StatusBadRequest)
@@ -107,6 +113,7 @@ func run() (s *http.Server) {
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
+		Handler: mux,
 	}
 
 	go func() {
