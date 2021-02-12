@@ -1,3 +1,10 @@
+# TODO
+
+* Create scorecard to enumerate bugs (from easy to hard)
+* Clarify instructions that there are a few bugs, and one new feature to add
+* Consider making assignment more difficult or use more advanced language constructs?
+* Add README for main repo, rename Go readme -> README
+
 # Full-stack developer technical assignment
 
 This is an assignment for the full-stack developer technical interview.
