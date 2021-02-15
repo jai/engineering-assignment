@@ -34,16 +34,17 @@ class QuizAdapter(private val quizzes: List<Quiz>, private val model: ShareViewM
 
         fun bind(quiz: Quiz, model: ShareViewModel) {
             question.text = quiz.question
+            choices.clearCheck()
             quiz.choices.forEachIndexed { i, q ->
                 (choices.getChildAt(i) as RadioButton).text = q
             }
-            choices.setOnCheckedChangeListener { radioGroup, i ->
-                val checked = radioGroup.findViewById<RadioButton>(i)
-                val correct = checked.text == quiz.answer
-                if (correct) {
-                    model.score = model.score + 1
-                }
-            }
+//            choices.setOnCheckedChangeListener { radioGroup, i ->
+//                val checked = radioGroup.findViewById<RadioButton>(i)
+//                val correct = checked.text == quiz.answer
+//                if (correct) {
+//                    model.score = model.score + 1
+//                }
+//            }
         }
 
     }
