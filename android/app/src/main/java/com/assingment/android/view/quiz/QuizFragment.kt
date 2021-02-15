@@ -16,7 +16,7 @@ import com.assingment.android.view.ShareViewModel
 class QuizFragment: Fragment() {
 
     private val layoutId: Int = R.layout.fragment_quiz
-    private val quizViewModel : QuizViewModel by viewModels()
+    private val quizViewModel : Qui zViewModel by viewModels()
     private val model: ShareViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class QuizFragment: Fragment() {
             findNavController().navigate(R.id.action_quizFragment_to_scoreFragment)
         }
 
-        quizViewModel.quizes.observe(viewLifecycleOwner, { it ->
+        quizViewModel.quizzes.observe(viewLifecycleOwner, {
             pager.adapter = QuizAdapter(it, model)
         })
 
@@ -50,6 +50,7 @@ class QuizFragment: Fragment() {
         })
 
         next.setOnClickListener {
+
             pager.setCurrentItem(quizViewModel.page + 1, true)
         }
 

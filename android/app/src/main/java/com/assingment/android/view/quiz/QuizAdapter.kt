@@ -11,10 +11,10 @@ import com.assingment.android.R
 import com.assingment.android.model.Quiz
 import com.assingment.android.view.ShareViewModel
 
-class QuizAdapter(private val quizes: List<Quiz>, private val model: ShareViewModel) :
+class QuizAdapter(private val quizzes: List<Quiz>, private val model: ShareViewModel) :
     RecyclerView.Adapter<QuizAdapter.ViewHolder>() {
 
-    override fun getItemCount(): Int = quizes.size
+    override fun getItemCount(): Int = quizzes.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -24,7 +24,7 @@ class QuizAdapter(private val quizes: List<Quiz>, private val model: ShareViewMo
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(quizes[position], model)
+        holder.bind(quizzes[position], model)
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -39,7 +39,7 @@ class QuizAdapter(private val quizes: List<Quiz>, private val model: ShareViewMo
             }
             choices.setOnCheckedChangeListener { radioGroup, i ->
                 val checked = radioGroup.findViewById<RadioButton>(i)
-                val correct = checked.text == quiz.answers
+                val correct = checked.text == quiz.answer
                 if (correct) {
                     model.score = model.score + 1
                 }

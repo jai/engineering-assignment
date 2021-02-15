@@ -1,3 +1,9 @@
+## TODO
+* Add README.md
+* Too many quiz questions
+
+
+
 ## In the project has 3 screen.
 
 * welcome screen
@@ -7,11 +13,12 @@
 Users need to enter name before start quiz, once finishing quiz it going to show answer in the result screen
 
 ## Easy bug
-When keyboard show up the cta button is gone
-key board show up when screen navigated to another screen which is edit text doesn't exist
+DONE - When keyboard show up the cta button is gone
+DONE - key board show up when screen navigated to another screen which is edit text doesn't exist
 
 ## Medium bug
-If user select the correct answers then re-select user still got point for the same question.
+If user select the correct answer then re-select user still got point for the same question.
+
 The score not show up in the last screen
 
 ## Advance bug

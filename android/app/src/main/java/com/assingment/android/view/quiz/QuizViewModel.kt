@@ -7,10 +7,10 @@ import com.assingment.android.model.Quiz
 
 class QuizViewModel: ViewModel() {
 
-    val quizes = MutableLiveData<List<Quiz>>()
+    val quizzes = MutableLiveData<List<Quiz>>()
     var page = 0
 
     init {
-        quizes.value = Data.quizes
+        quizzes.value = Data.quizzes
     }
 }
